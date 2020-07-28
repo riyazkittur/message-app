@@ -17,6 +17,7 @@ export function Counter() {
   return (
     <div>
       <div className={styles.row}>
+        <h2>Hello World</h2>
         <button
           className={styles.button}
           aria-label="Increment value"
