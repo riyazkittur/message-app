@@ -11,6 +11,10 @@ const conversationSlice=createSlice({
     reducers:{
 loadMessages:(state,action:PayloadAction<string>)=>{
     state.messages=state.messages?state.messages:[]
+},
+sendMessage:(state,action:PayloadAction<string>)=>{
+    if(action.payload!==null && action.payload.length!==0)
+    state.messages=[...state.messages,action.payload]
 }
     }
 })

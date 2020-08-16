@@ -9,12 +9,12 @@ import './App.css';
 
 
 
-import { Conversation } from './pages/components/messages/conversation';
+import ConversationConnector  from './pages/connectors/conversationConnector';
 
 function App() {
   return (
     <div className="p-orderlist-list">
-      <Conversation/>
+      <ConversationConnector/>
     </div>
   );
 }
