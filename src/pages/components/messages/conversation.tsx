@@ -18,8 +18,8 @@ const messageTemplate=(message:string)=>{
 
     return(
         <Card style={{width: '360px'}}>
-        <OrderList 
-        value={messages} 
+        <OrderList
+        value={messages}
         header="Manam"
         itemTemplate={messageTemplate}
         responsive={true}
