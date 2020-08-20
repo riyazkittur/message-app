@@ -1,3 +1,9 @@
+import { messageData } from "../../types/conversationState"
+
 export const sendMessage=(message:string)=>(dispatch:Function)=>{
-dispatch({type:'conversation/sendMessage',payload:message})
+    const messageDetails:messageData={
+        isReceived:false,
+        message:message
+    }
+dispatch({type:'conversation/sendMessage',payload:messageDetails})
 }
