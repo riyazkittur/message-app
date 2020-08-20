@@ -9,7 +9,7 @@ export function CreateMessage(props:createMessageProps){
     return(
         <div className="p-grid">
             <div className="p-col-2"></div>
-           <div className="p-col-8"> <InputTextarea rows={1} cols={75} value={message} onChange={(e)=>setMessage((e.target as HTMLInputElement).value)} /></div>
+           <div className="p-col-8"> <InputTextarea rows={1} cols={75} value={message} onChange={(e)=>setMessage((e.target as HTMLInputElement).value)} autoResize /></div>
            <div className="p-col-1"> <Button label="Send" className="p-button-raised p-button-rounded"  onClick={()=>{sendMessage(message);setMessage('')}}/></div>
         </div>
     )
