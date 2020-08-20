@@ -1,10 +1,14 @@
 export interface conversationState{
-        messages:string[]
+        messages:messageData[]
 }
 export interface conversationProps{
-        messages:string[]
+        messages:messageData[]
         sendMessage:Function
 }
 export interface createMessageProps{
         sendMessage:Function
+}
+export interface messageData{
+        isReceived:boolean
+        message:string
 }
