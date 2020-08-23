@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {sendMessage } from '../../redux/actions'
+import {sendMessage,loadMessages } from '../../redux/actions'
 import {getConversation} from '../../redux/reducers/conversationSlice'
 import Conversation from '../components/messages/conversation'
 
@@ -10,6 +10,7 @@ const mapStateToProps=(state:any)=>{
     }
 }
 const mapDispatchToProps={
-    sendMessage
+    sendMessage,
+    loadMessages
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Conversation)
