@@ -20,3 +20,7 @@ export interface newMessage{
         message:string
         timestamp:Date  
 }
+export interface highlightMessageProps{
+        message:string,
+        searchText:string
+}
