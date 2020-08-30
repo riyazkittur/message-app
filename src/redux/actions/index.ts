@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { newMessage } from "../../types/conversationState"
 
-export const sendMessage=(message:string)=>(dispatch:Function)=>{
+export const sendMessage=(message:string)=>async (dispatch:Function)=>{
     const messageDetails:newMessage={
         isReceived:false,
         message:message,
@@ -18,12 +18,16 @@ export const sendMessage=(message:string)=>(dispatch:Function)=>{
 const errorCallback=(errorResponse:any):void=>{
     console.log('Error in sending message====',errorResponse)
 }
-return axios.get('./mockData/addMessage.json')
-.then((response)=>successCallback(response))
-.catch((errorResponse)=>errorCallback(errorResponse))
+    try {
+        const response = await axios.get('./mockData/addMessage.json');
+        return successCallback(response);
+    }
+    catch (errorResponse_2) {
+        return errorCallback(errorResponse_2);
+    }
 
 }
-export const loadMessages=()=>(dispatch:Function)=>{
+export const loadMessages=()=>async (dispatch:Function)=>{
     const successCallback=({data}:any)=>{
         const dataToBePassed=data?.data.messages
         dispatch({type:'conversation/loadMessages',payload:dataToBePassed})
@@ -32,8 +36,13 @@ export const loadMessages=()=>(dispatch:Function)=>{
         console.log('Error occurred in load messages====',errorResponse)
     }
     //todo - change end point to real api
-    return axios.get('./mockData/messages.json')
-    .then((response)=>successCallback(response))
-    .catch((errorResponse)=>errorCallback(errorResponse))
+    try {
+        const response = await axios.get('./mockData/messages.json');
+        return successCallback(response);
+    }
+    catch (errorResponse_2) {
+        return errorCallback(errorResponse_2);
+    }
 
 }
+
