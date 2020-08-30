@@ -7,7 +7,21 @@ export const sendMessage=(message:string)=>(dispatch:Function)=>{
         message:message,
         timestamp:new Date()
     }
-dispatch({type:'conversation/sendMessage',payload:messageDetails})
+
+    const successCallback=({data}:any)=>{
+        let sentMessage=data?.data
+        //todo - remove the next three line as api returns the complete sent message
+      sentMessage.message=messageDetails.message;
+      sentMessage.isReceived=false;
+        dispatch({type:'conversation/sendMessage',payload:sentMessage})
+    }
+const errorCallback=(errorResponse:any):void=>{
+    console.log('Error in sending message====',errorResponse)
+}
+return axios.get('./mockData/addMessage.json')
+.then((response)=>successCallback(response))
+.catch((errorResponse)=>errorCallback(errorResponse))
+
 }
 export const loadMessages=()=>(dispatch:Function)=>{
     const successCallback=({data}:any)=>{
