@@ -24,18 +24,18 @@ export function Conversation(props: conversationProps) {
         return (
             <div>
                 {
-                    !msg.isReceived && <div className="p-grid p-justify-end">
-                        <div className='p-col p-col-fixed' style={{width: '40%'}} key={msg.id}>
-                            <Card className={msg.isReceived ? 'received-message' : 'sent-message'}>
+                    !msg.isReceived && <div key={msg.id} className="p-grid p-justify-end">
+                        <div className='p-col-5 p-col-fixed'>
+                            <Card className={'sent-message'}>
                                 <HighlightMessage message={msg.message} searchText={searchText}/>
                             </Card>
                         </div>
                     </div>
                 }
                 {
-                    msg.isReceived && <div className="p-grid p-justify-start">
-                        <div className='p-col p-col-fixed' style={{width: '40%'}} key={msg.id}>
-                            <Card className={msg.isReceived ? 'received-message' : 'sent-message'}>
+                    msg.isReceived && <div key={msg.id} className="p-grid p-justify-start">
+                        <div className='p-col-5 p-col-fixed'>
+                            <Card className={'received-message'}>
                                 <HighlightMessage message={msg.message} searchText={searchText}/>
                             </Card>
                         </div>
