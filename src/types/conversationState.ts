@@ -10,17 +10,24 @@ export interface createMessageProps{
         sendMessage:Function
 }
 export interface messageData{
-        id:string,
+        id:string
         isReceived:boolean
         message:string
         timestamp:Date
+        authorInfo:author
 }
 export interface newMessage{
         isReceived:boolean
         message:string
         timestamp:Date  
+        authorInfo:author
 }
 export interface highlightMessageProps{
         message:string,
         searchText:string
+}
+export interface author{
+        name:string,
+        phoneNumber:string,
+        isContact:boolean
 }
