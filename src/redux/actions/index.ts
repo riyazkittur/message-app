@@ -5,7 +5,12 @@ export const sendMessage=(message:string)=>async (dispatch:Function)=>{
     const messageDetails:newMessage={
         isReceived:false,
         message:message,
-        timestamp:new Date()
+        timestamp:new Date(),
+        authorInfo:{
+            name:"Manam",
+            phoneNumber:"123",
+            isContact:true
+        }
     }
 
     const successCallback=({data}:any)=>{

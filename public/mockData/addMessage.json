@@ -1,9 +1,14 @@
 {
     "data":{
-        "message": "6 Mallory Place",
-        "timestamp": "2019-09-10T07:14:40Z",
+        "message": "93 Rusk Court",
+        "timestamp": "2019-12-23T17:59:16Z",
         "isReceived": false,
-        "id": "4586d42e-37b1-4a06-94f7-75fffcb7b2d3"
-    }
+        "id": "e21492be-019a-4d84-a1a0-5dfab6abe389",
+        "authorInfo": {
+          "name": "Riyaz",
+          "phoneNumber": "328-117-3990",
+          "isContact": true
+        }
+      }
    
   }

@@ -1,23 +1,24 @@
-import React, {useEffect, useState} from 'react'
-import {Card} from 'primereact/card'
-import {ScrollPanel} from 'primereact/scrollpanel';
-import {InputText} from 'primereact/inputtext';
-import {Button} from 'primereact/button';
+import React, { useEffect, useState } from 'react'
+import { Card } from 'primereact/card'
+import { ScrollPanel } from 'primereact/scrollpanel';
+import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
 import CreateMessage from './create-message';
-import {conversationProps, messageData} from '../../../types/conversationState';
+import { conversationProps, messageData } from '../../../types/conversationState';
 import './conversation.css'
 import HighlightMessage from '../highlight-message';
 
 export function Conversation(props: conversationProps) {
-    const {messages, sendMessage, loadMessages} = props
+    const { messages, sendMessage, loadMessages } = props
+
 
     const [searchText, searchMessages] = useState('')
-    const stylePanel = {width: '100%', height: '400px'}
+    const stylePanel = { width: '100%', height: '400px' }
 
     useEffect(() => {
-            loadMessages()
-
-        }, [loadMessages]
+        loadMessages()
+    },
+        [loadMessages]
     )
 
     const messageComponentList = messages.map((msg: messageData) => {
@@ -26,8 +27,9 @@ export function Conversation(props: conversationProps) {
                 {
                     !msg.isReceived && <div key={msg.id} className="p-grid p-justify-end">
                         <div className='p-col-5 p-col-fixed'>
-                            <Card className={'sent-message'}>
-                                <HighlightMessage message={msg.message} searchText={searchText}/>
+                            <Card className={'sent-message'}
+                                subTitle={msg.authorInfo.isContact ? msg.authorInfo.name : msg.authorInfo.phoneNumber}>
+                                <HighlightMessage message={msg.message} searchText={searchText} />
                             </Card>
                         </div>
                     </div>
@@ -35,8 +37,9 @@ export function Conversation(props: conversationProps) {
                 {
                     msg.isReceived && <div key={msg.id} className="p-grid p-justify-start">
                         <div className='p-col-5 p-col-fixed'>
-                            <Card className={'received-message'}>
-                                <HighlightMessage message={msg.message} searchText={searchText}/>
+                            <Card className={'received-message'}
+                                subTitle={msg.authorInfo.isContact ? msg.authorInfo.name : msg.authorInfo.phoneNumber}>
+                                <HighlightMessage message={msg.message} searchText={searchText} />
                             </Card>
                         </div>
                     </div>
@@ -57,8 +60,8 @@ export function Conversation(props: conversationProps) {
                         <div className="p-col-12 p-md-4">
                             <div className="p-inputgroup">
                                 <InputText placeholder="Keyword"
-                                           onChange={(e) => searchMessages((e.target as HTMLInputElement).value)}/>
-                                <Button icon="pi pi-search" className="p-button-warning"/>
+                                    onChange={(e) => searchMessages((e.target as HTMLInputElement).value)} />
+                                <Button icon="pi pi-search" className="p-button-warning" />
                             </div>
                         </div>
                     </div>
@@ -70,7 +73,7 @@ export function Conversation(props: conversationProps) {
                 </Card>
                 <div>
                     <Card>
-                        <CreateMessage sendMessage={sendMessage}/>
+                        <CreateMessage sendMessage={sendMessage} />
                     </Card>
                 </div>
             </div>
